@@ -1,4 +1,4 @@
-static int zeros = 48;
+static int zeros = 56;
 
 void printGame(int arr[][9], int row, int col){
 
@@ -6,7 +6,18 @@ void printGame(int arr[][9], int row, int col){
 
         for(int j = 0; j < col; j++){
 
-            printf("%d   ", arr[i][j]);
+            if(((i == 0 && j == 2) || (i == 0 && j == 6)) || ((i == 1 && j == 3) || (i == 1 && j == 5)) || ((i == 2 && j == 0) || (i == 2 && j == 4) || (i == 2 && j == 8)) || ((i == 3 && j == 1) || (i == 3 && j == 3) || (i == 3 && j == 5) || (i == 3 && j == 7)) || ((i == 4 && j == 2) || (i == 4 && j == 6)) || ((i == 5 && j == 1) || (i == 5 && j == 3) || (i == 5 && j == 5) || (i == 5 && j == 7)) || ((i == 6 && j == 0) || (i == 6 && j == 4) || (i == 6 && j == 8)) || ((i == 7 && j == 3) || (i == 7 && j == 5)) || ((i == 8 && j == 2) || (i == 8 && j == 6))){
+                printf("\033[1;31m%d   ", arr[i][j]);
+            }
+
+            else{
+                if(arr[i][j] == 0){
+                    printf("\033[1;37m%d   ", arr[i][j]);
+                }
+                else{
+                    printf("\033[1;32m%d   ", arr[i][j]);
+                }
+            }
 
         }
 
@@ -20,8 +31,8 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
     if(numRow == 0){
 
-        if(numCol == 0 || numCol == 4 || numCol == 8){
-            printf("Secured Number\n");
+        if(numCol == 2 || numCol == 6){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -47,20 +58,20 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
             if(rowFlag == 0){
 
-                printf("%d exists in (%d, %d)\n", num,numRow, cIndex);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,numRow, cIndex);
                 printGame(arr, 9,9);
 
             }
 
             else if(colFlag == 0){
-                printf("%d exists in (%d, %d)\n", num,rIndex, numCol);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,rIndex, numCol);
                 printGame(arr, 9,9);
             }
 
             else{
                 arr[numRow][numCol] = num;
                 printf("\n");
-                printGame(arr, row, col);
+                printGame(arr, 9,9);
                 zeros--;
             }
 
@@ -71,8 +82,8 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
     if(numRow == 1){
 
-        if(numCol == 1 || numCol == 3 || numCol == 5 || numCol == 7){
-            printf("Secured Number\n");
+        if(numCol == 3 || numCol == 5){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -98,13 +109,13 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
             if(rowFlag == 0){
 
-                printf("%d exists in (%d, %d)\n", num,numRow, cIndex);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,numRow, cIndex);
                 printGame(arr, 9,9);
 
             }
 
             else if(colFlag == 0){
-                printf("%d exists in (%d, %d)\n", num,rIndex, numCol);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,rIndex, numCol);
                 printGame(arr, 9,9);
             }
 
@@ -112,7 +123,7 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
                 arr[numRow][numCol] = num;
                 printf("\n");
-                printGame(arr, row, col);
+                printGame(arr, 9,9);
                 zeros--;
             }
         }
@@ -121,8 +132,8 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
     if(numRow == 2){
 
-        if(numCol == 3 || numCol == 5){
-            printf("Secured Number\n");
+        if(numCol == 0 || numCol == 4 || numCol == 8){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -148,16 +159,15 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
             if(rowFlag == 0){
 
-                printf("%d exists in (%d, %d)\n", num,numRow, cIndex);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,numRow, cIndex);
                 printGame(arr, 9,9);
 
             }
 
             else if(colFlag == 0){
-                printf("%d exists in (%d, %d)\n", num,rIndex, numCol);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,rIndex, numCol);
                 printGame(arr, 9,9);
             }
-
             else{
 
                 arr[numRow][numCol] = num;
@@ -172,8 +182,8 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
     if(numRow == 3){
 
-        if(numCol == 1 ||numCol == 2 || numCol == 3 || numCol == 5 || numCol == 6 || numCol == 7){
-            printf("Secured Number\n");
+        if(numCol == 1 ||numCol == 3 || numCol == 5 || numCol == 7){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -198,13 +208,13 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
             }
             if(rowFlag == 0){
 
-                printf("%d exists in (%d, %d)\n", num,numRow, cIndex);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,numRow, cIndex);
                 printGame(arr, 9,9);
 
             }
 
             else if(colFlag == 0){
-                printf("%d exists in (%d, %d)\n", num,rIndex, numCol);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,rIndex, numCol);
                 printGame(arr, 9,9);
             }
 
@@ -222,8 +232,8 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
     if(numRow == 4){
 
-        if(numCol == 0 || numCol == 4 || numCol == 8){
-            printf("Secured Number\n");
+        if(numCol == 2 || numCol == 6){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -249,13 +259,13 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
             if(rowFlag == 0){
 
-                printf("%d exists in (%d, %d)\n", num,numRow, cIndex);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,numRow, cIndex);
                 printGame(arr, 9,9);
 
             }
 
             else if(colFlag == 0){
-                printf("%d exists in (%d, %d)\n", num,rIndex, numCol);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,rIndex, numCol);
                 printGame(arr, 9,9);
             }
 
@@ -273,8 +283,8 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
     if(numRow == 5){
 
-        if(numCol == 1 ||numCol == 2 || numCol == 3 || numCol == 5 || numCol == 6 || numCol == 7){
-            printf("Secured Number\n");
+        if(numCol == 1 ||numCol == 3 || numCol == 5 || numCol == 7){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -300,13 +310,13 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
             if(rowFlag == 0){
 
-                printf("%d exists in (%d, %d)\n", num,numRow, cIndex);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,numRow, cIndex);
                 printGame(arr, 9,9);
 
             }
 
             else if(colFlag == 0){
-                printf("%d exists in (%d, %d)\n", num,rIndex, numCol);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,rIndex, numCol);
                 printGame(arr, 9,9);
             }
 
@@ -324,8 +334,8 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
     if(numRow == 6){
 
-        if(numCol == 3 || numCol == 5){
-            printf("Secured Number\n");
+        if(numCol == 0 || numCol == 4 || numCol == 8){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -351,13 +361,13 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
             if(rowFlag == 0){
 
-                printf("%d exists in (%d, %d)\n", num,numRow, cIndex);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,numRow, cIndex);
                 printGame(arr, 9,9);
 
             }
 
             else if(colFlag == 0){
-                printf("%d exists in (%d, %d)\n", num,rIndex, numCol);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,rIndex, numCol);
                 printGame(arr, 9,9);
             }
 
@@ -375,8 +385,8 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
     if(numRow == 7){
 
-        if(numCol == 1 || numCol == 3 || numCol == 5 || numCol == 7){
-            printf("Secured Number\n");
+        if(numCol == 3 || numCol == 5){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -402,13 +412,13 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
             if(rowFlag == 0){
 
-                printf("%d exists in (%d, %d)\n", num,numRow, cIndex);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,numRow, cIndex);
                 printGame(arr, 9,9);
 
             }
 
             else if(colFlag == 0){
-                printf("%d exists in (%d, %d)\n", num,rIndex, numCol);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,rIndex, numCol);
                 printGame(arr, 9,9);
             }
 
@@ -426,8 +436,8 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
     if(numRow == 8){
 
-        if(numCol == 0 || numCol == 4 || numCol == 8){
-            printf("Secured Number\n");
+        if(numCol == 2 || numCol == 6){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -453,13 +463,13 @@ void addNumber(int arr[][9], int row, int col,int numRow, int numCol, int num){
 
             if(rowFlag == 0){
 
-                printf("%d exists in (%d, %d)\n", num,numRow, cIndex);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,numRow, cIndex);
                 printGame(arr, 9,9);
 
             }
 
             else if(colFlag == 0){
-                printf("%d exists in (%d, %d)\n", num,rIndex, numCol);
+                printf("\033[1;31m%d exists in (%d, %d)\n\n", num,rIndex, numCol);
                 printGame(arr, 9,9);
             }
 
@@ -483,8 +493,8 @@ void deleteNumber(int arr[][9], int row, int col,int numRow, int numCol){
 
     if(numRow == 0){
 
-        if(numCol == 0 || numCol == 4 || numCol == 8){
-            printf("Secured Number\n");
+        if(numCol == 2 || numCol == 6){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -510,8 +520,8 @@ void deleteNumber(int arr[][9], int row, int col,int numRow, int numCol){
 
     if(numRow == 1){
 
-        if(numCol == 1 || numCol == 3 || numCol == 5 || numCol == 7){
-            printf("Secured Number\n");
+        if(numCol == 3 || numCol == 5){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -536,8 +546,8 @@ void deleteNumber(int arr[][9], int row, int col,int numRow, int numCol){
 
     if(numRow == 2){
 
-        if(numCol == 3 || numCol == 5){
-            printf("Secured Number\n");
+        if(numCol == 0 || numCol == 4 || numCol == 8){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -561,8 +571,8 @@ void deleteNumber(int arr[][9], int row, int col,int numRow, int numCol){
 
     if(numRow == 3){
 
-        if(numCol == 1 ||numCol == 2 || numCol == 3 || numCol == 5 || numCol == 6 || numCol == 7){
-            printf("Secured Number\n");
+        if(numCol == 1 ||numCol == 3 || numCol == 5 || numCol == 7){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -587,8 +597,8 @@ void deleteNumber(int arr[][9], int row, int col,int numRow, int numCol){
 
     if(numRow == 4){
 
-        if(numCol == 0 || numCol == 4 || numCol == 8){
-            printf("Secured Number\n");
+        if(numCol == 2 || numCol == 6){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -612,8 +622,8 @@ void deleteNumber(int arr[][9], int row, int col,int numRow, int numCol){
 
     if(numRow == 5){
 
-        if(numCol == 1 ||numCol == 2 || numCol == 3 || numCol == 5 || numCol == 6 || numCol == 7){
-            printf("Secured Number\n");
+        if(numCol == 1 ||numCol == 3 || numCol == 5 || numCol == 7){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -638,8 +648,8 @@ void deleteNumber(int arr[][9], int row, int col,int numRow, int numCol){
 
     if(numRow == 6){
 
-        if(numCol == 3 || numCol == 5){
-            printf("Secured Number\n");
+        if(numCol == 0 || numCol == 4 || numCol == 8){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -664,8 +674,8 @@ void deleteNumber(int arr[][9], int row, int col,int numRow, int numCol){
 
     if(numRow == 7){
 
-        if(numCol == 1 || numCol == 3 || numCol == 5 || numCol == 7){
-            printf("Secured Number\n");
+        if(numCol == 3 || numCol == 5){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -689,8 +699,8 @@ void deleteNumber(int arr[][9], int row, int col,int numRow, int numCol){
 
     if(numRow == 8){
 
-        if(numCol == 0 || numCol == 4 || numCol == 8){
-            printf("Secured Number\n");
+        if(numCol == 2 || numCol == 6){
+            printf("\033[1;31mSecured Number\n\n");
             printGame(arr, 9,9);
         }
 
@@ -719,49 +729,24 @@ void GameResult(){
 
     if(zeros > 0){
 
-        printf("Try Again, %d Numbers is Missed\n\n", zeros);
+        printf("\033[1;31mTry Again, %d Numbers is Missed\n\n", zeros);
 
     }
 
     else if(zeros == 0){
 
-        printf("Congratulations!\n\n");
+        printf("\033[1;32mCongratulations!\n\n");
 
     }
-
-}
-
-void print_solution(){
-
-    int arr[9][9] = {{1,3,7,4,8,2,6,5,9},
-                     {8,5,9,6,7,1,3,2,4},
-                     {6,2,4,5,9,3,7,8,1},
-                     {2,9,6,1,5,4,8,3,7},
-                     {3,4,8,2,6,7,1,9,5},
-                     {7,1,5,9,3,8,4,6,2},
-                     {9,6,3,7,4,5,2,1,8},
-                     {4,8,1,3,2,9,5,7,6},
-                     {5,7,2,8,1,6,9,4,3}};
-
-    printGame(arr, 9, 9);
 
 }
 
 void GameOptions(){
 
     printf("\n\n");
-    printf("Options:\n");
-    printf("1- Enter 1 to Add / Edit Number\n");
+    printf("\033[1;34mOptions:\n");
+    printf("\033[1;33m1- Enter 1 to Add / Edit Number\n");
     printf("2- Enter 2 to Delete Number\n");
-    printf("3- Enter 3 to Display The Result\n");
-    printf("4- Enter 4 to Display The Solution\n\n");
+    printf("3- Enter 3 to Display The Result\n\n");
 
 }
-
-
-
-
-
-
-
-
